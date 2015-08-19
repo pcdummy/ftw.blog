@@ -89,7 +89,7 @@ class BlogView(BrowserView):
             return self.request.response.redirect(
                 aq_parent(context).absolute_url() + querystring)
 
-        query['sort_on'] = 'created'
+        query['sort_on'] = 'effective'
         query['sort_order'] = 'reverse'
         query['portal_type'] = 'BlogEntry'
         # show all entries from all languages

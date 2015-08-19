@@ -73,7 +73,7 @@
                                 <span i18n:translate="Creation Date">
                                   created
                                 </span>
-                                <span tal:replace="python:toLocalizedTime(item.CreationDate ,long_format=1)">
+                                <span tal:replace="python:toLocalizedTime(item.EffectiveDate ,long_format=1)">
                                   August 16, 2001 at 23:35:59
                                 </span>
 

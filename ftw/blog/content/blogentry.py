@@ -103,10 +103,10 @@ schemata.finalizeATCTSchema(BlogEntrySchema,
                             folderish=True,
                             moveDiscussion=False)
 #finalizeZugSchema(BlogEntrySchema, folderish=True, moveDiscussion=False)
-BlogEntrySchema['effectiveDate'].widget.visible = {'view': 'invisible',
-                                                    'edit': 'invisible'}
-BlogEntrySchema['expirationDate'].widget.visible = {'view': 'invisible',
-                                                    'edit': 'invisible'}
+BlogEntrySchema['effectiveDate'].widget.visible = {'view': 'visible',
+                                                    'edit': 'visible'}
+BlogEntrySchema['expirationDate'].widget.visible = {'view': 'visible',
+                                                    'edit': 'visible'}
 
 # #hide some fields
 BlogEntrySchema['subject'].widget.visible = -1
