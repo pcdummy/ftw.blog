@@ -30,11 +30,19 @@ BlogEntrySchema = folder.ATFolderSchema.copy() + atapi.Schema((
         schemata='default',
         required=False,
         searchable=True,
-        allowable_content_types=('text/html', ),
+        allowable_content_types=(
+            'text/html',
+            'text/plain',
+            'text/plain-pre',
+            'text/restructured',
+            'text/structured',
+            'text/x-rst',
+            'text/x-web-markdown',
+            'text/x-web-textile'),
         default_content_type='text/html',
         validators=('isTidyHtmlWithCleanup', ),
-        default_input_type='text/html',
-        default_output_type='text/x-html-safe',
+        default_input_type='text/x-web-markdown',
+        default_output_type='text/html',
         widget=atapi.RichWidget(
             label='Text',
             label_msgid='ftw_label_text',
@@ -71,9 +79,10 @@ BlogEntrySchema = folder.ATFolderSchema.copy() + atapi.Schema((
         schemata='default',
         widget=atapi.BooleanWidget(
             label=_('label_show_images', default=u'Show images as gallery'),
-            description=_('description_show_images',
-                           default=u'Decide you want to show all uploaded '
-                                    'images as gallery'),
+            description=_(
+                'description_show_images',
+                default=u'Decide you want to show all uploaded '
+                        u'images as gallery'),
         ),
     ),
 
