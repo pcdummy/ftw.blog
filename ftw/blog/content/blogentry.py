@@ -25,6 +25,24 @@ else:
 BlogEntrySchema = folder.ATFolderSchema.copy() + atapi.Schema((
 
     atapi.TextField(
+        name='description',
+        storage=atapi.AnnotationStorage(),
+        schemata='default',
+        required=False,
+        searchable=True,
+        default_output_type='text/x-html-safe',
+        widget=atapi.RichWidget(
+            label='Summary',
+            label_msgid='summary',
+            description='',
+            description_msgid='summary_help',
+            i18n_domain='plone',
+            rows=5,
+            rooted=True,
+        ),
+    ),
+
+    atapi.TextField(
         name='text',
         storage=atapi.AnnotationStorage(),
         schemata='default',
@@ -103,7 +121,7 @@ BlogEntrySchema['location'].widget.visible = -1
 BlogEntrySchema.changeSchemataForField('location', 'default')
 BlogEntrySchema['language'].widget.visible = -1
 BlogEntrySchema.changeSchemataForField('language', 'default')
-BlogEntrySchema['description'].widget.visible = -1
+BlogEntrySchema['description'].widget.visible = 1
 
 #protect fields; they should only be editable for managers
 protected_fields = ['creators', 'contributors', 'rights', 'allowDiscussion',

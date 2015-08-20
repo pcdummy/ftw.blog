@@ -23,17 +23,17 @@ def set_description(obj, event):
     """Get the first 200 Chars from text and set them as descrption
     Use portal_transforms to create plain-text
     """
-
-    portal_transforms = getToolByName(obj, 'portal_transforms')
-    ploneview = obj.restrictedTraverse('@@plone')
-    text = obj.getField('text').get(obj)
-    datastream = portal_transforms.convertTo(
-        'text/plain',
-        text,
-        mimetype='text/html')
-    plain_text = datastream.getData()
-    # truncate
-    length = 200
-    truncated = ploneview.cropText(plain_text, length)
-    obj.getField('description').set(obj, truncated)
-    obj.reindexObject()
+    if len(obj.getField('description').get(obj)) == 0:
+        portal_transforms = getToolByName(obj, 'portal_transforms')
+        ploneview = obj.restrictedTraverse('@@plone')
+        text = obj.getField('text').get(obj)
+        datastream = portal_transforms.convertTo(
+            'text/plain',
+            text,
+            mimetype='text/html')
+        plain_text = datastream.getData()
+        # truncate
+        length = 200
+        truncated = ploneview.cropText(plain_text, length)
+        obj.getField('description').set(obj, truncated)
+        obj.reindexObject()
